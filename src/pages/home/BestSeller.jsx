@@ -13,11 +13,11 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const BestSeller = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch("/products.json")
+        fetch("https://fakestoreapi.com/products")
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
-    const BestSellers = products.filter((item) => item.status === "Best Sellers");
+    const BestSellers = products.filter(item => item.rating.rate >= 4.5);
     console.log(BestSellers)
     return (
         <div className='max-w-screen-2xl container mx-auto xl:px-28 px-4 '>
